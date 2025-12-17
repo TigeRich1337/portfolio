@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibrahim Guliyev - IT Engineer & Project Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #312e81 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        body > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-light);
+            border: 2px solid var(--primary-light);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* About Section */
+        .about {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            font-weight: 800;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+
+        /* Skills Section */
+        .skills {
+            background: transparent;
+            padding: 6rem 2rem;
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: var(--white);
+            font-weight: 800;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+        }
+
+        .skill-icon svg {
+            stroke: currentColor;
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .skill-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: transparent;
+            padding: 6rem 2rem;
+        }
+
+        .experience-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .experience h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: var(--white);
+            font-weight: 800;
+        }
+
+        .experience-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            position: relative;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            background: transparent;
+            transform: translateX(-50%);
+        }
+
+        .experience-item {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            padding: 2.5rem;
+            border-left: none;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            top: 2.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .experience-item:hover {
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+            transform: translateX(5px);
+            border-color: var(--primary-light);
+        }
+
+        .experience-date {
+            color: var(--primary-light);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .experience-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.25rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .company {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .experience-item ul li {
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .experience-item ul li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Education Section */
+        .education {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .education-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .education h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: var(--white);
+            font-weight: 800;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-top: none;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+        }
+
+        .education-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary-light);
+        }
+
+        .education-level {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .education-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .university {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .period {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .location {
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .projects h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: var(--white);
+            font-weight: 800;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: transparent;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary-light);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(236, 72, 153, 0.3) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image svg {
+            stroke: currentColor;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .project-content {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .project-content p {
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary-light);
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: rgba(99, 102, 241, 0.3);
+            border-color: var(--primary-light);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            border-top: 2px solid rgba(99, 102, 241, 0.2);
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--primary-light);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .social-links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .social-links a:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .about-content h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-brand">Ibrahim Guliyev</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Hi, I'm an <span>IT Specialist & Project Manager</span> 🚀</h1>
+        <p class="hero-subtitle">Experienced IT specialist with expertise in enterprise IT infrastructure, access control systems, and large-scale project management. Lead representative of Suprema in Azerbaijan.</p>
+        <div class="cta-buttons">
+            <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView()">View My Projects</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView()">Get In Touch</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>Experienced IT specialist and project engineer with extensive background creating and maintaining diverse IT infrastructures, on-site support, and enterprise access control solutions. Currently serving as the Lead IT Support Representative for Suprema in Azerbaijan.</p>
+            <p>My expertise spans system integration, network and server administration, CRM/ERP platforms, and enterprise project management. I deliver large-scale solutions for government, finance, and industrial sectors with a focus on security, scalability, and operational excellence.</p>
+        </div>
+        <div class="about-image" style="width: 280px; height: 350px; margin-left: 0;">
+            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/d67cdaf2-0362-42bf-a214-0c6a1f5ca425" alt="Ibrahim Guliyev" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="skills-container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" width="60" height="60" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            <circle cx="12" cy="20" r="1"></circle>
+                        </svg>
+                    </div>
+                    <h3>Access Control</h3>
+                    <p>Suprema ACS, biometric systems, time & attendance, enterprise security</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" width="60" height="60" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Cloud Infrastructure</h3>
+                    <p>Microsoft Azure, AWS, virtualization, cloud architecture</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" width="60" height="60" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M2 17h20"></path>
+                            <path d="M6 20h12"></path>
+                        </svg>
+                    </div>
+                    <h3>System Administration</h3>
+                    <p>Active Directory, Windows/Linux servers, networking, VoIP systems</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" width="60" height="60" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Enterprise Systems</h3>
+                    <p>Salesforce, Odoo, Vtiger, JIRA, project management tools</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" width="60" height="60" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                            <line x1="1" y1="3" x2="23" y2="3"></line>
+                            <path d="M10 12v4"></path>
+                            <path d="M14 12v4"></path>
+                        </svg>
+                    </div>
+                    <h3>Data Science & SQL</h3>
+                    <p>SQL Server, data analysis, database management, reporting</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" width="60" height="60" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                    </div>
+                    <h3>Languages</h3>
+                    <p>Azerbaijani, Russian (C1), English (C1), Turkish (B2)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="experience-container">
+            <h2>Work Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-date">Dec 2024 – Present</div>
+                    <h3>IT Engineer</h3>
+                    <p class="company">Distechsol LLC, Baku, Azerbaijan</p>
+                    <ul>
+                        <li>Lead IT Support Representative for Suprema access control solutions in Azerbaijan</li>
+                        <li>End-to-end IT project management from technical specifications to implementation and support</li>
+                        <li>Installation, configuration, and technical support of Suprema Access Control Systems (ACS)</li>
+                        <li>Integration of biometric systems and time & attendance solutions for enterprise clients</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-date">Jun 2021 – Aug 2022</div>
+                    <h3>Information Technology Specialist</h3>
+                    <p class="company">Distechsol LLC, Baku, Azerbaijan</p>
+                    <ul>
+                        <li>IT support for Lukoil Shahdeniz, LV Logistics – Caspian, and other major corporations</li>
+                        <li>Management of VoIP and access control systems</li>
+                        <li>Server administration, VM management (Windows/Linux), Active Directory, Azure</li>
+                        <li>Direct user support, troubleshooting, and staff training on new systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="education-container">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-level">PhD (EQF Level 8)</div>
+                    <h3>Management Information Systems</h3>
+                    <p class="university">Bahçeşehir Üniversitesi</p>
+                    <p class="period">Sep 2024 – Present</p>
+                    <p class="location">Nicosia, Cyprus</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-level">Master (EQF Level 7)</div>
+                    <h3>Data Science</h3>
+                    <p class="university">Uczelnia Vistula</p>
+                    <p class="period">Oct 2022 – Jun 2024</p>
+                    <p class="location">Warsaw, Poland</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-level">Bachelor (EQF Level 6)</div>
+                    <h3>Computer Science</h3>
+                    <p class="university">The Academy of Public Administration under the President of the Republic of Azerbaijan</p>
+                    <p class="period">Sep 2018 – Jun 2022</p>
+                    <p class="location">Baku, Azerbaijan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="20" y="40" width="60" height="40" rx="2"></rect>
+                        <path d="M30 40V25c0-2.2 1.8-4 4-4h12c2.2 0 4 1.8 4 4v15"></path>
+                        <path d="M54 40V25c0-2.2 1.8-4 4-4h12c2.2 0 4 1.8 4 4v15"></path>
+                        <circle cx="50" cy="60" r="3" fill="currentColor"></circle>
+                    </svg>
+                </div>
+                <div class="project-content">
+                    <h3>Suprema ACS & Time Attendance (SOCAR Polymer)</h3>
+                    <p>Design and deployment of large-scale biometric access control and time attendance system at industrial facility ensuring complete security and attendance automation</p>
+                    <div class="project-tags">
+                        <span class="tag">Suprema</span>
+                        <span class="tag">Biometrics</span>
+                        <span class="tag">Access Control</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="50" cy="50" r="35"></circle>
+                        <path d="M50 20v30M50 50h30"></path>
+                        <path d="M50 50L70 65"></path>
+                        <circle cx="50" cy="50" r="8" fill="currentColor"></circle>
+                    </svg>
+                </div>
+                <div class="project-content">
+                    <h3>Enterprise IT Infrastructure</h3>
+                    <p>Comprehensive management and administration of complex IT infrastructure for multiple corporate clients across diverse sectors including finance, energy, and manufacturing</p>
+                    <div class="project-tags">
+                        <span class="tag">Azure</span>
+                        <span class="tag">Active Directory</span>
+                        <span class="tag">Networking</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M30 60L40 50M40 50L50 60M50 60L60 50M60 50L70 60"></path>
+                        <path d="M25 40h50v35H25z"></path>
+                        <path d="M35 40V30h30v10"></path>
+                        <circle cx="50" cy="72" r="2" fill="currentColor"></circle>
+                    </svg>
+                </div>
+                <div class="project-content">
+                    <h3>CRM/ERP Systems Integration</h3>
+                    <p>Implementation and integration of enterprise ERP/CRM systems (Salesforce, Odoo, Vtiger) for business process optimization and data-driven decision making</p>
+                    <div class="project-tags">
+                        <span class="tag">Salesforce</span>
+                        <span class="tag">Odoo</span>
+                        <span class="tag">Integration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Let's Connect</h2>
+            <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out if you'd like to discuss IT solutions or collaboration.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/ibrahim-guliyev/" target="_blank" title="LinkedIn">🔗</a>
+                <a href="mailto:ibrahim_guliyev@outlook.com" title="Email">✉️</a>
+                <a href="https://wa.me/994552884303" target="_blank" title="WhatsApp">💬</a>
+                <a href="tel:+994552884303" title="Phone">📞</a>
+            </div>
+            <p>Contact me via LinkedIn, email, or WhatsApp</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Ibrahim Guliyev. All rights reserved. | IT Specialist & Project Manager</p>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .skill-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
